@@ -26,18 +26,6 @@
             <resources>
                 <lookups/>
                 <mappings/>
-                <resource method="GET" path="/organizations" type="SIMPLE" name="getListallOrganizationsassociatedtoyouraccount" displayName="List all Organizations associated to your account">
-                    <mappings>
-                        <map isRequired="true" context="IN" name="Authorization">
-                            <source type="IDATA">cx.Authorization</source>
-                            <target type="HEADER">Authorization</target>
-                        </map>
-                    </mappings>
-                    <parameters/>
-                    <responses>
-                        <response name="listAllOrganization" code="200" messageFormatterType="application/octet+idataoref" builderType="application/xml" documentRef="com.softwareag.beaconstac_v2.organization.doctypes:listAllOrganization" excludeRoot="true" dimension="0"/>
-                    </responses>
-                </resource>
                 <resource method="GET" path="/organizations/{organizationId}" type="SIMPLE" name="getretrieveAnOrganization" displayName="retrieveAnOrganization">
                     <mappings>
                         <map context="IN" name="Authorization">
@@ -52,9 +40,35 @@
                         <response name="listAllOrganization" code="200" messageFormatterType="application/octet+idataoref" builderType="application/xml" documentRef="com.softwareag.beaconstac_v2.organization.doctypes:listAllOrganization" excludeRoot="true" dimension="0"/>
                     </responses>
                 </resource>
-                <resource method="GET" path="/organizations/{orgId}/counts/" type="SIMPLE" name="getcountobject" displayName="count object">
+                <resource method="GET" path="/organizations" type="SIMPLE" name="getListallOrganizationsassociatedtoyouraccount" displayName="List all Organizations associated to your account">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="Authorization">
+                            <source type="IDATA">cx.Authorization</source>
+                            <target type="HEADER">Authorization</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <responses>
+                        <response name="listAllOrganization" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v2.organization.doctypes:listAllOrganization" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="POST" path="/organizations" type="SIMPLE" name="postcreateorganization" displayName="create organization">
                     <mappings>
                         <map context="IN" name="Authorization">
+                            <source ty<map context="IN" name="Aut</source>
+                            <target type="HEADER">Authorization</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <request name="createOrgReq" messageFormatterType="application/xml" builderType="application/octet+idataoref" documentRef="com.softwareag.beaconstac_v2.organization.doctypes:createOrgReq" excludeRoot="true" dimension="0"/>
+                    <responses>
+                        <response name="createOrgRes" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v2.organization.doctypes:createOrgRes" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="GET" path="/organizations/{orgId}/counts/" type="SIMPLE" name="getcountobject" displayName="count object">
+                    <mappings>
+                        <map isRequired="true" context="IN" n">
+               ">
                             <source type="IDATA">cx.Authorization</source>
                             <target type="HEADER">Authorization</target>
                         </map>
@@ -63,23 +77,11 @@
                         <parameter name="orgId" isRequired="true" style="URI_CONTEXT"/>
                     </parameters>
                     <responses>
-                        <response name="stream" code="200" messageFormatterType="vnd.sag.cloudstreams+binary" builderType="vnd.sag.cloudstreams+binary" dimension="0"/>
-                    </responses>
-                </resource>
-                <resource method="POST" path="/organizations" type="SIMPLE" name="postcreateorganization" displayName="create organization">
-                    <mappings>
-                        <map context="IN" name="Authorization">
-                            <source type="IDATA">cx.Authorization</source>
-                            <target type="HEADER">Authorization</target>
-                        </map>
-                    </mappings>
-                    <parameters/>
-                    <request name="createOrgReq" messageFormatterType="application/xml" builderType="application/octet+idataoref" documentRef="com.softwareag.beaconstac_v2.organization.doctypes:createOrgReq" excludeRoot="true" dimension="0"/>
-                    <responses>
-                        <response name="createOrgRes" code="200" messageFormatterType="application/octet+idataoref" builderType="application/xml" documentRef="com.softwareag.beaconstac_v2.organization.doctypes:createOrgRes" excludeRoot="true" dimension="0"/>
+                        <response name="countObjectRes" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v2.organization.doctypes:countObjectRes" excludeRoot="true" dimension="0"/>
                     </responses>
                 </resource>
             </resources>
         </service>
     </services>
 </rest-connector>
+
