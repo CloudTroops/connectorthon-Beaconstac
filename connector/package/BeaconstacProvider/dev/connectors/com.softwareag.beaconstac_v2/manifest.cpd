@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Connector-Key: com.softwareag.beaconstac_v2
+Connector-Name: beaconstac
+Connector-Version: 1.0
+Connector-Handler: com.softwareag.cloudstreams.metadata.handler.rest.Res
+ tConnectorMetadataHandler
+Connector-State: Enabled
+Connector-Bundle-Vendor: PBHA
+Connector-Bundle-Version: 1.0
+Connector-Group: Beaconstac
+Connector-Group-ID: com.softwareag.beaconstac
+Connector-Group-Version: 2
+Project: 
+
+Name: User-Defined
+Application-Version: 2.0
+Connector-Type: Custom
+applicationImageID: 
+
