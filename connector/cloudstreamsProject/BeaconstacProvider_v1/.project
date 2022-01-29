@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>BeaconstacProvider_v1(localhost_5556)</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+		<nature>com.softwareag.cloudstreams.connector.project.nature.ProjectNature</nature>
+	</natures>
+</projectDescription>

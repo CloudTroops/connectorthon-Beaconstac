@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rest-connector xmlns="http://www.softwareag.com/cloudstreams/metadata/handler/model" id="com.softwareag.beaconstac_v1" version="1.0" group="Beaconstac" name="BeaconstacProvider_v1" displayName="BeaconstacProvider_v1">
+    <connections>
+        <connection type="sagcloud" name="SAG_Connection" displayName="SAG_Connection">
+            <groups>
+                <group type="connection" name="connection" displayName="Connection">
+                    <description>Define the required connection configurations to initiate communication with the SaaS provider.</description>
+                    <fields>
+                        <field isRequired="true" isEncrypted="false" isHidden="false" isArray="false" defaultValue="https://api.beaconstac.com/api/2.0" name="cn.providerUrl" displayName="Server URL">
+                            <description>The native provider endpoint target for the connection configuration</description>
+                        </field>
+                    </fields>
+                </group>
+                <group type="custom" name="custom" displayName="Custom">
+                    <description>Define any custom configurations specific to the SaaS provider.</description>
+                    <fields>
+                        <field type="string" isRequired="true" isEncrypted="false" isHidden="false" isArray="false" modelType="Basic" name="cx.Authorization" displayName="Authorization"/>
+                    </fields>
+                </group>
+            </groups>
+        </connection>
+    </connections>
+    <services>
+        <service xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="RESTServiceType" endpoint="${cn.providerUrl}" name="organization" displayName="Organization">
+            <documentModel packageName="." nsName="com.softwareag.beaconstac_v1.organization.doctypes" useInlineModel="true"/>
+            <resources>
+                <lookups/>
+                <mappings>
+                    <map isRequired="true" context="IN" name="Authorization" displayName="Authorization">
+                        <source type="IDATA">cx.Authorization</source>
+                        <target type="HEADER">Authorization</target>
+                    </map>
+                </mappings>
+                <resource method="GET" path="/organizations" type="SIMPLE" name="getListallOrganizationsassociatedtoyouraccount" displayName="List all Organizations associated to your account">
+                    <mappings/>
+                    <parameters/>
+                    <responses>
+                        <response name="stream" code="200" messageFormatterType="vnd.sag.cloudstreams+binary" builderType="vnd.sag.cloudstreams+binary" dimension="0"/>
+                    </responses>
+                </resource>
+            </resources>
+        </service>
+    </services>
+</rest-connector>
