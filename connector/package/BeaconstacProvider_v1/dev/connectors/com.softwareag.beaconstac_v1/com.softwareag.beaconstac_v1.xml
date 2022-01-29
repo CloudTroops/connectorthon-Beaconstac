@@ -59,23 +59,23 @@
                         <response name="errorResponse" code="401-499" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.organization.doctypes:errorResponse" excludeRoot="true" dimension="0"/>
                     </responses>
                 </resource>
-                <resource method="PUT" path="/organizations/{OrganizationId}/" type="SIMPLE" name="putUpdateOrganization" displayName="Update Organization">
-                    <mappings/>
-                    <parameters>
-                        <parameter name="OrganizationId" isRequired="true" style="URI_CONTEXT"/>
-                    </parameters>
-                    <request name="updateOrganizationReq" messageFormatterType="application/json" builderType="application/octet+idataoref" documentRef="com.softwareag.beaconstac_v1.organization.doctypes:updateOrganizationReq" excludeRoot="true" dimension="0"/>
-                    <responses>
-                        <response name="updateOrganizationRes" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.organization.doctypes:updateOrganizationRes" excludeRoot="true" dimension="0"/>
-                        <response name="errorResponse" code="401-499" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.organization.doctypes:errorResponse" excludeRoot="true" dimension="0"/>
-                    </responses>
-                </resource>
                 <resource method="POST" path="/organizations" type="SIMPLE" name="postCreateChildOrganization" displayName="Create Child Organization">
                     <mappings/>
                     <parameters/>
                     <request name="createOrganizationReq" messageFormatterType="application/json" builderType="application/octet+idataoref" documentRef="com.softwareag.beaconstac_v1.organization.doctypes:createOrganizationReq" excludeRoot="true" dimension="0"/>
                     <responses>
                         <response name="createOrganizationRes" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.organization.doctypes:createOrganizationRes" excludeRoot="true" dimension="0"/>
+                        <response name="errorResponse" code="401-499" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.organization.doctypes:errorResponse" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="PUT" path="/organizations/{organizationId}" type="SIMPLE" name="putupdateorganization" displayName="update organization">
+                    <mappings/>
+                    <parameters>
+                        <parameter name="organizationId" isRequired="true" style="URI_CONTEXT"/>
+                    </parameters>
+                    <request name="updateOrganizationReq" messageFormatterType="application/json" builderType="application/octet+idataoref" documentRef="com.softwareag.beaconstac_v1.organization.doctypes:updateOrganizationReq" excludeRoot="true" dimension="0"/>
+                    <responses>
+                        <response name="updateOrganizationRes" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.organization.doctypes:updateOrganizationRes" excludeRoot="true" dimension="0"/>
                         <response name="errorResponse" code="401-499" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.organization.doctypes:errorResponse" excludeRoot="true" dimension="0"/>
                     </responses>
                 </resource>
