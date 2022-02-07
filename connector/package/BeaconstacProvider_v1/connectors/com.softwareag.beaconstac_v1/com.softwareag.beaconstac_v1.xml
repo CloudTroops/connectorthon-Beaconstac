@@ -81,5 +81,103 @@
                 </resource>
             </resources>
         </service>
+        <service xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="RESTServiceType" endpoint="${cn.providerUrl}" name="qrcode" displayName="QR Code">
+            <documentModel packageName="." nsName="com.softwareag.beaconstac_v1.qrcode.doctypes" useInlineModel="true"/>
+            <resources>
+                <mappings/>
+                <resource method="GET" path="/qrcodes/{qrCodeId}" type="SIMPLE" name="getretrieveQRCode" displayName="retrieveQRCode">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="Authorization">
+                            <source type="IDATA">cx.Authorization</source>
+                            <target type="HEADER">Authorization</target>
+                        </map>
+                    </mappings>
+                    <parameters>
+                        <parameter name="qrCodeId" isRequired="true" style="URI_CONTEXT"/>
+                    </parameters>
+                    <responses>
+                        <response name="retrieveQRCodeResponse" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.qrcode.doctypes:retrieveQRCodeResponse" excludeRoot="true" dimension="0"/>
+                        <response name="empty" code="400-499" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.qrcode.doctypes:empty" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="GET" path="/qrcodes" type="SIMPLE" name="getlistAllQRCodes" displayName="listAllQRCodes">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="Authorization">
+                            <source type="IDATA">cx.Authorization</source>
+                            <target type="HEADER">Authorization</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <responses>
+                        <response name="listAllQRCodes" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.qrcode.doctypes:listAllQRCodes" excludeRoot="true" dimension="0"/>
+                        <response name="empty" code="400-500" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.qrcode.doctypes:empty" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="PUT" path="/qrcodes/{qrCodeId}" type="SIMPLE" name="putupdateQRCode" displayName="updateQRCode">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="Authorization">
+                            <source type="IDATA">cx.Authorization</source>
+                            <target type="HEADER">Authorization</target>
+                        </map>
+                    </mappings>
+                    <parameters>
+                        <parameter name="qrCodeId" isRequired="true" style="URI_CONTEXT"/>
+                    </parameters>
+                    <request name="updateQRCodeRequest" messageFormatterType="application/json" builderType="application/octet+idataoref" documentRef="com.softwareag.beaconstac_v1.qrcode.doctypes:updateQRCodeRequest" excludeRoot="true" dimension="0"/>
+                    <responses>
+                        <response name="updateQRCodeResponse" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.qrcode.doctypes:updateQRCodeResponse" excludeRoot="true" dimension="0"/>
+                        <response name="empty" code="400-500" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.qrcode.doctypes:empty" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="DELETE" path="/qrcodes/{qrCodeId}" type="SIMPLE" name="deletedeleteQRCode" displayName="deleteQRCode">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="Authorization">
+                            <source type="IDATA">cx.Authorization</source>
+                            <target type="HEADER">Authorization</target>
+                        </map>
+                    </mappings>
+                    <parameters>
+                        <parameter name="qrCodeId" isRequired="true" style="URI_CONTEXT"/>
+                    </parameters>
+                    <request name="stream" messageFormatterType="vnd.sag.cloudstreams+binary" builderType="vnd.sag.cloudstreams+binary" dimension="0"/>
+                    <responses>
+                        <response name="empty" code="204" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.qrcode.doctypes:empty" excludeRoot="true" dimension="0"/>
+                        <response name="notFound404Response" code="404" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.qrcode.doctypes:notFound404Response" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="GET" path="/qrcodes/{qrCodeId}/download" type="SIMPLE" name="getdownloadQRCodeImage" displayName="downloadQRCodeImage">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="Authorization">
+                            <source type="IDATA">cx.Authorization</source>
+                            <target type="HEADER">Authorization</target>
+                        </map>
+                    </mappings>
+                    <parameters>
+                        <parameter name="qrCodeId" isRequired="true" style="URI_CONTEXT"/>
+                        <parameter name="size" isRequired="true" style="QUERYSTRING_PARAM" defaultValue="1024"/>
+                        <parameter name="error_correction_level" isRequired="true" style="QUERYSTRING_PARAM" defaultValue="5"/>
+                        <parameter name="canvas_type" isRequired="true" style="QUERYSTRING_PARAM" defaultValue="pdf"/>
+                    </parameters>
+                    <responses>
+                        <response name="downloadQRCodeImageResponse" code="200" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.qrcode.doctypes:downloadQRCodeImageResponse" excludeRoot="true" dimension="0"/>
+                        <response name="empty" code="400-500" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.qrcode.doctypes:empty" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+                <resource method="POST" path="/qrcodes" type="SIMPLE" name="postcreateQRCode" displayName="createQRCode">
+                    <mappings>
+                        <map isRequired="true" context="IN" name="Authorization">
+                            <source type="IDATA">cx.Authorization</source>
+                            <target type="HEADER">Authorization</target>
+                        </map>
+                    </mappings>
+                    <parameters/>
+                    <request name="qrCodesRequest" messageFormatterType="application/json" builderType="application/octet+idataoref" documentRef="com.softwareag.beaconstac_v1.qrcode.doctypes:qrCodesRequest" excludeRoot="true" dimension="0"/>
+                    <responses>
+                        <response name="qrCodeResponse" code="200-201" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.qrcode.doctypes:qrCodeResponse" excludeRoot="true" dimension="0"/>
+                        <response name="empty" code="400-500" messageFormatterType="application/octet+idataoref" builderType="application/json" documentRef="com.softwareag.beaconstac_v1.qrcode.doctypes:empty" excludeRoot="true" dimension="0"/>
+                    </responses>
+                </resource>
+            </resources>
+        </service>
     </services>
 </rest-connector>
